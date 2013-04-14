@@ -48,10 +48,10 @@ classdef CKalmanEqMesConstK < handle
                 Kn2 = sqrt(Sx / Smeas);
                 Kn1 = sqrt(2*Kn2);
                 K.Koeff = [Kn1; Kn2] * K.T;
-            elseif K.nx == 3 % TEMP!!!!
-                Kn2 = sqrt(Sx / Smeas);
-                Kn3 = (Kn2/2)^(3/2);
-                Kn1 = sqrt(2*Kn2);
+            elseif K.nx == 3 
+                Kn3 = sqrt(Sx / Smeas);
+                Kn2 = 2*(Kn3)^(2/3);
+                Kn1 = 2*(Kn3)^(1/3);
                 K.Koeff = [Kn1; Kn2; Kn3] * K.T;
             else
                 disp('Need function: setKoeffFromSpectr');
